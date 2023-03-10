@@ -7,7 +7,7 @@ func TestUpload(t *testing.T) {
 	uploader := MockUploader{}
 	expected := RepositoryId("testId")
 
-	repoId := uploader.Upload(path)
+	repoId := uploader.upload(path)
 
 	if expected != repoId {
 		t.Fatalf("uploader.Upload(/tmp/song.mp3) != RepositoryId(testId)")
@@ -19,7 +19,7 @@ func TestGetUrl(t *testing.T) {
 	uploader := MockUploader{}
 	expected := RepositoryUrl("fakeUrl")
 
-	repoUrl := uploader.GetUrl(repoId)
+	repoUrl := uploader.getUrl(repoId)
 
 	if expected != repoUrl {
 		t.Fatalf("uploader.GetUrl(RepositoryId(testId)) != RepositoryUrl(fakeUrl)")

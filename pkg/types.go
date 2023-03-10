@@ -11,15 +11,15 @@ type DriveUploader struct {
 	srv *drive.Service
 }
 
-type DownloadService interface {
-	DownloadVideo(VideoId)
-	DownloadThumbnail(VideoId)
-	EmbedThumbnail(VideoId)
+type Downloader interface {
+	downloadVideo(VideoId)
+	downloadThumbnail(VideoId)
+	embedThumbnail(VideoId) error
 }
 
-type UploadService interface {
-	Upload(string) RepositoryId
-	GetUrl(RepositoryId) RepositoryUrl
+type Uploader interface {
+	upload(string) RepositoryId
+	getUrl(RepositoryId) RepositoryUrl
 }
 
 const TMP = "/tmp"

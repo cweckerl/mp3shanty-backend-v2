@@ -39,10 +39,10 @@ func TestGetOutputFilePath(t *testing.T) {
 	id := VideoId("abc")
 	expected := "/tmp/abc.mp3"
 
-	path := GetOutputFilePath(id)
+	path := getOutputFilePath(id)
 
 	if expected != path {
-		t.Fatalf("GetOutputFilePath(abc) != /tmp/abc.mp3")
+		t.Fatalf("getOutputFilePath(abc) != /tmp/abc.mp3")
 	}
 }
 

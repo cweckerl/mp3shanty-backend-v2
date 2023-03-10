@@ -2,25 +2,30 @@ package pkg
 
 import "sync"
 
-func Run(id VideoId, downloader DownloadService, uploader UploadService) RepositoryUrl {
+func Run(id VideoId, downloader Downloader, uploader Uploader) RepositoryUrl {
 	var wg sync.WaitGroup
 	wg.Add(2)
 
 	go func() {
 		defer wg.Done()
-		downloader.DownloadThumbnail(id)
+		downloader.downloadThumbnail(id)
 	}()
 
 	go func() {
 		defer wg.Done()
-		downloader.DownloadVideo(id)
+		downloader.downloadVideo(id)
 	}()
 
 	wg.Wait()
 
-	downloader.EmbedThumbnail(id)
+	err := downloader.embedThumbnail(id)
 
-	path := GetOutputFilePath(id)
-	repoId := uploader.Upload(path)
-	return uploader.GetUrl(repoId)
+	var path string
+	if err != nil {
+		path = getOutputFilePath(id)
+	} else {
+		path = getTempFilePath(id)
+	}
+	repoId := uploader.upload(path)
+	return uploader.getUrl(repoId)
 }

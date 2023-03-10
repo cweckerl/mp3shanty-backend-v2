@@ -57,7 +57,7 @@ func NewDriveUploader() DriveUploader {
 	return DriveUploader{srv: srv}
 }
 
-func (u DriveUploader) Upload(path string) RepositoryId {
+func (u DriveUploader) upload(path string) RepositoryId {
 	_, id := filepath.Split(path)
 	file := drive.File{
 		Name:     id,
@@ -77,7 +77,7 @@ func (u DriveUploader) Upload(path string) RepositoryId {
 	return RepositoryId(driveFile.Id)
 }
 
-func (u DriveUploader) GetUrl(repoId RepositoryId) RepositoryUrl {
+func (u DriveUploader) getUrl(repoId RepositoryId) RepositoryUrl {
 	perm := drive.Permission{
 		Role: "reader",
 		Type: "anyone",

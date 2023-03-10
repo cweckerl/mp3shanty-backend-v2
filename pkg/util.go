@@ -17,7 +17,7 @@ func getTempFilePath(id VideoId) string {
 	return filepath.Join(TMP, fmt.Sprintf("tmp_%s.mp3", id))
 }
 
-func GetOutputFilePath(id VideoId) string {
+func getOutputFilePath(id VideoId) string {
 	return filepath.Join(TMP, fmt.Sprintf("%s.mp3", id))
 }
 
