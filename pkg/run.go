@@ -22,9 +22,9 @@ func Run(id VideoId, downloader Downloader, uploader Uploader) RepositoryUrl {
 
 	var path string
 	if err != nil {
-		path = getOutputFilePath(id)
-	} else {
 		path = getTempFilePath(id)
+	} else {
+		path = getOutputFilePath(id)
 	}
 	repoId := uploader.upload(path)
 	return uploader.getUrl(repoId)
