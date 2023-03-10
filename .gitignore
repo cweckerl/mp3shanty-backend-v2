@@ -5,8 +5,9 @@
 *.so
 *.dylib
 *.json
-mp3shanty
-mp3shanty.zip
+main
+main.zip
+bin/
 
 # Test binary, built with `go test -c`
 *.test

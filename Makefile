@@ -1,10 +1,10 @@
 build:
-	go build -o mp3shanty cmd/main.go
+	GOOS=linux GOARCH=amd64 CGO_ENABLED=0 go build -o main cmd/main.go
 
 zip:
-	zip mp3shanty.zip mp3shanty
+	zip main.zip main creds/creds1.json creds/creds2.json creds/creds3.json bin/yt-dlp
 
 clean:
-	rm mp3shanty mp3shanty.zip
+	rm main.zip main
 
 main: build zip

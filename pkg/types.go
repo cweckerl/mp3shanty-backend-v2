@@ -2,14 +2,6 @@ package pkg
 
 import "google.golang.org/api/drive/v3"
 
-type EventInput struct {
-	VideoId string `json:"videoId"`
-}
-
-type EventOutput struct {
-	Url string `json:"url"`
-}
-
 type VideoId string
 type RepositoryId string
 type RepositoryUrl string
@@ -31,4 +23,4 @@ type UploadService interface {
 }
 
 const TMP = "/tmp"
-const CREDS = "../creds"
+const CREDS = "creds/"

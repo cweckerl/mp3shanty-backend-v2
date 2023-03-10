@@ -7,7 +7,7 @@ import (
 
 func (d YtDlpDownloader) DownloadVideo(id VideoId) {
 	cmd := exec.Command(
-		"yt-dlp",
+		"./bin/yt-dlp",
 		"-x",
 		"--audio-format", "mp3",
 		"-o", getTempFilePath(id),
@@ -16,7 +16,7 @@ func (d YtDlpDownloader) DownloadVideo(id VideoId) {
 	)
 
 	if err := cmd.Run(); err != nil {
-		log.Fatalf("Failed to download %s", id)
+		log.Fatalf("Failed to download %s: %v", id, err)
 	}
 }
 
@@ -30,7 +30,7 @@ func (d YtDlpDownloader) DownloadThumbnail(id VideoId) {
 	)
 
 	if err := cmd.Run(); err != nil {
-		log.Printf("Failed to download thumbnail for %s", id)
+		log.Printf("Failed to download thumbnail for %s: %v", id, err)
 	}
 }
 
@@ -50,6 +50,6 @@ func (d YtDlpDownloader) EmbedThumbnail(id VideoId) {
 	)
 
 	if err := cmd.Run(); err != nil {
-		log.Printf("Failed to embed thumbnail for %s", id)
+		log.Printf("Failed to embed thumbnail for %s: %v", id, err)
 	}
 }
