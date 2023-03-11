@@ -9,7 +9,7 @@ func TestGetVideoUrl(t *testing.T) {
 	url := getVideoUrl(id)
 
 	if expected != url {
-		t.Fatalf("getVideoUrl(abc) != https://www.youtube.com/watch?v=abc")
+		t.Fatalf("Expected %q, got %q", expected, url)
 	}
 }
 
@@ -20,7 +20,7 @@ func TestGetThumbnailUrl(t *testing.T) {
 	url := getThumbnailUrl(id)
 
 	if expected != url {
-		t.Fatalf("getThumbnailUrl(abc) != https://img.youtube.com/vi/abc/maxresdefault.jpg")
+		t.Fatalf("Expected %q, got %q", expected, url)
 	}
 }
 
@@ -31,7 +31,7 @@ func TestGetTempFilePath(t *testing.T) {
 	path := getTempFilePath(id)
 
 	if expected != path {
-		t.Fatalf("getTempFilePath(abc) != /tmp/tmp_abc.mp3")
+		t.Fatalf("Expected %q, got %q", expected, path)
 	}
 }
 
@@ -42,7 +42,7 @@ func TestGetOutputFilePath(t *testing.T) {
 	path := getOutputFilePath(id)
 
 	if expected != path {
-		t.Fatalf("getOutputFilePath(abc) != /tmp/abc.mp3")
+		t.Fatalf("Expected %q, got %q", expected, path)
 	}
 }
 
@@ -53,6 +53,6 @@ func TestThumbnailFilePath(t *testing.T) {
 	path := getThumbnailFilePath(id)
 
 	if expected != path {
-		t.Fatalf("getThumbnailFilePath(abc) != /tmp/abc.jpg")
+		t.Fatalf("Expected %q, got %q", expected, path)
 	}
 }
