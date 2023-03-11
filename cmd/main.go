@@ -18,6 +18,7 @@ func handleRequest(request events.APIGatewayProxyRequest) (events.APIGatewayProx
 	downloader := pkg.YtDlpDownloader{}
 	uploader := pkg.NewDriveUploader()
 	repoUrl := pkg.Run(videoId, downloader, uploader)
+	log.Printf("%s", repoUrl)
 	return events.APIGatewayProxyResponse{
 		StatusCode: 200,
 		Headers: map[string]string{
